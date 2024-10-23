@@ -1,0 +1,3 @@
+Max Weight Independent Subset %d0 3 3 4 9 9 14 
+Vertices Included:
+3 6 5 
