@@ -30,7 +30,9 @@ int mwis(vector<int>&graph){
         dp[i]=max(dp[i-1],dp[i-2]+graph[i-1]);
        
     }
+    cout<<"Max Weight Independent Subset is "<<dp[n]<<endl;
 
+    cout<<endl;
     give(dp,graph.size()+1);
 
     vector<int>st;
@@ -44,8 +46,9 @@ int mwis(vector<int>&graph){
         }
     }
 
-    cout<<"Vertices Included:"<<endl;
+    cout<<"Vertices Included: ";
     reverse(st.begin(),st.end());
+
     give(st,st.size());
     return dp[graph.size()];
 }
@@ -53,10 +56,9 @@ int mwis(vector<int>&graph){
 
 void solve()
 {
-    vector<int>graph{3,2,1,6,4,5};
-    cout<<"Max Weight Independent Subset %d",mwis(graph)<<endl;
+    vector<int>graph{5,3,1,7,2,4,6};
+    mwis(graph);
     
-
 }
 
 int32_t main()
