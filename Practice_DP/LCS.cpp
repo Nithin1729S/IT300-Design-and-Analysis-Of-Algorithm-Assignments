@@ -18,9 +18,44 @@ using namespace std;
 #define take(a,n) vi a(n); f0(i,n) cin >> a[i];
 #define give(a,n) f0(i,n){cout << a[i] << ' ';}cout << endl;
 
+int longestCommonSubsequence(string text1, string text2) {
+        vector<vector<int>>dp(text1.size()+1,vector<int>(text2.size()+1,0));
+        for(int i=1;i<=text1.size();i++){
+            for(int j=1;j<=text2.size();j++){
+                if(text1[i-1]==text2[j-1]){
+                    dp[i][j]=1+dp[i-1][j-1];
+                }else{
+                    dp[i][j]=max(dp[i-1][j],dp[i][j-1]);
+                }
+            }
+        }
+        
+        int i=text1.size();
+        int j=text2.size();
+        string res;
+        while(i>0 && j>0){
+            if(text1[i-1] == text2[j-1]){
+                res.push_back(text1[i-1]);
+                i--;
+                j--;
+            }else if(dp[i-1][j]>dp[i][j-1]){
+                i--;
+            }else{
+                j--;
+            }
+        }
+        reverse(res.begin(),res.end());
+        cout<<res<<endl;
+        return dp[text1.size()][text2.size()];       
+}
+
+
 void solve()
 {
-    
+    string text1="abcde";
+    string text2="ace";
+    cout<<longestCommonSubsequence(text1,text2)<<endl;
+
 }
 int32_t main()
 {
