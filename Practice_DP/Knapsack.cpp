@@ -51,9 +51,9 @@ int knapsack(int idx,int currSz,vector<int>&values,vector<int>&sz,vector<vector<
 
 void solve()
 {
-    vector<int>values{3,2,4,4};
-    vector<int>sz{4,3,2,3};
-    int maxCap=6;
+    vector<int>values{1,2,3,4,5};
+    vector<int>sz{1,3,2,5,4};
+    int maxCap=9;
     // vector<vector<int>>dp(values.size(),vector<int>(maxCap+1,-1));
     // cout<<knapsack(values.size()-1,6,values,sz,dp);
     vector<vector<int>>dp(values.size(),vector<int>(maxCap+1,0));
