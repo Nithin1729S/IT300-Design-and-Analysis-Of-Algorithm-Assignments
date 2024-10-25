@@ -6,26 +6,26 @@ int main(){
         freopen("in.txt","r",stdin);
     #endif
 
-    vector<long long>values;
-    vector<long long>weights;
-    long long n;
-    long long capacity;
+    vector<int>values;
+    vector<int>weights;
+    int n;
+    int capacity;
     cin>>capacity>>n;
     for(int i=0;i<n;i++){
-        long long v;
-        long long c;
+        int v;
+        int c;
         cin>>v>>c;
         values.push_back(v);
         weights.push_back(c);
     }
-    vector<vector<long long>>dp(n,vector<long long>(capacity+1,0));
+    vector<vector<int>>dp(n,vector<int>(capacity+1,0));
     for(int i=weights[0];i<=capacity;i++){
         dp[0][i]=values[0];
     }
     for(int idx=1;idx<n;idx++){
         for(int cap=0;cap<=capacity;cap++){
-            long long pick=-1e9;
-            long long notpick=dp[idx-1][cap];
+            int pick=-1e9;
+            int notpick=dp[idx-1][cap];
             if(cap>=weights[idx]) pick=values[idx]+dp[idx-1][cap-weights[idx]];
             dp[idx][cap]= max(pick,notpick);
         }
@@ -33,7 +33,7 @@ int main(){
     cout<<"Max Value :"<<dp[n-1][capacity]<<endl;
     int cap=capacity;
     cout<<"Included Items: "<<endl;
-    vector<long long>chosenOnes;
+    vector<int>chosenOnes;
     int sum=0;
     for(int idx=n-1;idx>=0;idx--){
         if(idx==0 ){
